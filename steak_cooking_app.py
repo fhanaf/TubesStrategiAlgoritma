@@ -86,6 +86,7 @@ def main():
         if total_time_greedy != -1:
             st.header("With Total Time : ")
             st.header(total_time_greedy)
+            st.header(total_time_DP)
 
 if __name__ == "__main__":
     main()
