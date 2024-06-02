@@ -77,7 +77,7 @@ def main():
                 st.error("It is not possible to cook the steaks at both restaurants using Greedy method.")
             else:
                 st.success("The total time needed to cook all steaks at both restaurants using Greedy method is possible")
-        if 'Backtracking' in choice:
+        if 'Dynamic Programming' in choice:
             total_time_DP = dynamic_programming(N, T, A, B)
             if total_time_DP == -1:
                 st.error("It is not possible to cook the steaks at both restaurants using Dynamic Programming method.")
