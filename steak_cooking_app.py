@@ -17,7 +17,7 @@ def solveWithGreedy(N, T, A, B):
 
     return totalTime
 
-def backtrack_solution(N, T, A, B):
+def dynamic_programming(N, T, A, B):
     memo = {}
 
     def dp(steak_counts):
@@ -58,17 +58,17 @@ def main():
     for i in range(N - 1):
         T.append(st.sidebar.number_input(f"Level {i+1} to Level {i+2}:", min_value=1, max_value=1000, step=1))
 
-    st.sidebar.header("Initial Steak Counts at Steak House A")
+    st.sidebar.header("Initial Steak Counts at Steak House")
     A = []
     for i in range(N):
         A.append(st.sidebar.number_input(f"Doneness Level A{i+1}:", min_value=0, max_value=1000, step=1))
 
-    st.sidebar.header("Orders at Steak House B")
+    st.sidebar.header("Orders at Steak House")
     B = []
     for i in range(N):
         B.append(st.sidebar.number_input(f"Doneness Level B{i+1}:", min_value=0, max_value=1000, step=1))
 
-    choice = st.multiselect('Choose Algorithm',['Greedy', 'Backtracking'], default=['Greedy', 'Backtracking'])
+    choice = st.multiselect('Choose Algorithm',['Greedy', 'Dynamic Programming'], default=['Greedy', 'Dynamic Programming'])
     
     if st.button("Calculate Total Time"):
         if 'Greedy' in choice:
@@ -78,11 +78,11 @@ def main():
             else:
                 st.success("The total time needed to cook all steaks at both restaurants using Greedy method is possible")
         if 'Backtracking' in choice:
-            total_time_backtracking = backtrack_solution(N, T, A, B)
-            if total_time_backtracking == -1:
-                st.error("It is not possible to cook the steaks at both restaurants using Backtracking method.")
+            total_time_DP = dynamic_programming(N, T, A, B)
+            if total_time_DP == -1:
+                st.error("It is not possible to cook the steaks at both restaurants using Dynamic Programming method.")
             else:
-                st.success("The total time needed to cook all steaks at both restaurants using Backtracking method is possible")
+                st.success("The total time needed to cook all steaks at both restaurants using Dynamic Programming method is possible")
         if total_time_greedy != -1:
             st.header("With Total Time : ")
             st.header(total_time_greedy)
